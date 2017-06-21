@@ -1,0 +1,7 @@
+[user]
+	email = pvibet@gmail.com
+	name = Swoopla
+[core]
+	editor = /usr/bin/vim
+[push]
+	default = simple

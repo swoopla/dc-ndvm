@@ -1,0 +1,14 @@
+version: '2'
+services:
+  ndvm:
+    build: build/
+    ports:
+      - "7519:7519"
+    volumes:
+     - $PWD/run/data/mnt:/mnt:ro
+    networks:
+      - internet
+
+networks:
+  internet:
+    driver: bridge 
