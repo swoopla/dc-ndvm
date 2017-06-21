@@ -1,0 +1,18 @@
+FROM node
+
+MAINTAINER Swoops <p.vibet@gmail.com>
+
+RUN echo 'deb http://httpredir.debian.org/debian jessie-backports main contrib non-free' > /etc/apt/sources.list.d/backports.list && \
+    apt-get update && \
+    apt-get install -y ffmpeg sqlite3
+
+RUN cd /usr/src && \
+    git clone https://github.com/NDVM/NDVM.git && \
+    sed -i -e 's/checkapp true "xdg-open/$no_browser \|\| checkapp true "xdg-open/' NDVM/start.sh
+
+WORKDIR /usr/src/NDVM
+
+#COPY entrypoint.sh /
+
+#CMD ["/bin/bash", "/entrypoint.sh"]
+CMD ["/bin/bash","start.sh -b"] 

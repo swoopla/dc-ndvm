@@ -1,0 +1,45 @@
+version: '2'
+services:
+  ndvm:
+    build: build/
+    ports:
+      - "7519:7519"
+    environment:
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/bin2:/usr/local/bin3
+    volumes:
+     - $PWD/run/data/ndvm-mnt:/mnt
+     - $PWD/run/data/ndvm-usr_src_NDVM_data_cache:/usr/src/NDVM/data/cache
+     - $PWD/run/data/ndvm-usr_src_NDVM_data_db:/usr/src/NDVM/data/db
+     - $PWD/run/conf/ndvm-etc_ld.so.conf.d/ffmpeg.conf:/etc/ld.so.conf.d/ffmpeg.conf
+     - ffmpeg-lib:/usr/local/lib2:ro
+     - ffmpeg-bin:/usr/local/bin2:ro
+     - sqlite-bin:/usr/local/bin3:ro
+    links:
+      - ffmpeg
+    networks:
+      - internet
+  ffmpeg:
+    image: jrottenberg/ffmpeg
+    read_only: true
+    volumes:
+      - ffmpeg-bin:/usr/local/bin:ro
+      - ffmpeg-lib:/usr/local/lib:ro
+    entrypoint: sh
+  sqlite:
+   image: nouchka/sqlite3
+   read_only: true
+   volumes:
+      - sqlite-bin:/usr/bin:ro
+   entrypoint: bash
+
+volumes:
+  ffmpeg-bin:
+    driver: local
+  ffmpeg-lib:
+    driver: local
+  sqlite-bin:
+    driver: local
+
+networks:
+  internet:
+    driver: bridge 

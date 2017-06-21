@@ -1,0 +1,9 @@
+Docker-compose-ndvm
+====
+
+Docker-compose for use NDVM (https://github.com/NDVM/NDVM)
+
+--
+
+3 containers vs Dockerfile...
+Simple, first is the speedest. I need 3 programs for use NDVM code.
