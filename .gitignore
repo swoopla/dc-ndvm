@@ -1,5 +1,8 @@
 *.mp4
 *.jpg
 *.sqlite
+<<<<<<< HEAD
 .gitignore
 .gitconfig
+=======
+>>>>>>> be24f3db0388088aed40fb698ea1bc996553519b
