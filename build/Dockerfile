@@ -1,6 +1,6 @@
 FROM node
 
-MAINTAINER Swoops <p.vibet@gmail.com>
+LABEL Swoops <p.vibet@gmail.com>
 
 RUN cd /usr/src && \
     git clone https://github.com/NDVM/NDVM.git && \
